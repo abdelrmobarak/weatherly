@@ -1,0 +1,46 @@
+html {
+  overflow: hidden;
+  background: linear-gradient(to top,#0C8AF3, #c9e1ff);
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+input {
+  text-align: center;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  border: none;
+  height:9rem;
+  width: 30rem;
+  font-size: 3rem;
+  font-family: 'Yantramanav';
+}
+
+button {
+  font-family: 'Yantramanav';
+  text-align: center;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  border: none;
+  margin-top: 2rem;
+  height: 6rem;
+  width:12rem;
+  font-size: 2.5rem;
+  background-color:white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  transition: all;
+  transition-duration: 300ms;
+}
