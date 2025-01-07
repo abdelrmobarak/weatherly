@@ -1,7 +1,7 @@
 # Weather App
 
 This is a simple weather app I created using the [Open-Meteo API] (https://open-meteo.com/) to fetch data.
-This app can be used to fetch real-time weather information for any city the user specifices. 
+This app can be used to fetch real-time weather information for any city the user chooses. 
 
 ## Built with
 React.js, HTML/CSS, Open-Meteo API, and Axios
