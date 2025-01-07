@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    font-family: 'Yantramanav', sans-serif;
+    color: black;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.info {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.temperature, .precipitation, .sunrise, .sunset {
+    display:flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    align-items:center;
+    justify-content:center;
+}
+
+.temperature h1, .precipitation h1, .sunrise h1, .sunset h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.temperature p, .precipitation p, .sunrise p, .sunset p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.temperature .tagline {
+    font-size: 1rem;
+    color: #0C8AF3;
+    font-style: italic;
+    font-weight:bold;
+}
+
+.foots {
+    color:black;
+    font-size: 1.5rem;
+}
+
+.back {
+    border: 0.2rem solid #d9d9d9
+}
+
+.back:hover {
+    border: none;
+}

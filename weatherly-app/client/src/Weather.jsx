@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Weather.css'
+import './Weather.css';
 
-
-function Weather() {
+function Weather(props) {
     const [input, setInput] = useState('');
     const [cityResults, setCityResults] = useState([]);
     const [selectedCity, setSelectedCity] = useState(null);
-    const [lat, setLat] = useState('');
-    const [lon, setLon] = useState('');
-    const [weatherData, setWeatherData] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');  
-
+    const [errorMessage, setErrorMessage] = useState('');
 
     const searchCities = async () => {
         if (input) {
@@ -34,33 +29,21 @@ function Weather() {
                     setCityResults(response.data.results);
                 }
             } catch (error) {
-                console.error('Error fetching city data', error);
-                setErrorMessage('An error occurred while fetching city data. Please try again.');
+                console.error('Error fetching data', error);
+                setErrorMessage('An error occurred while fetching data.');
             } finally {
                 setLoading(false);
             }
         }
     };
 
-    const handleCitySelect = (city) => {
+    function handleCitySelect(city){
         setSelectedCity(city);
-        setLat(city.latitude);
-        setLon(city.longitude);
+        const lat = city.latitude;
+        const lon = city.longitude;
+        props.onSubmit(lat, lon, city);
         setCityResults([]);
     };
-
-    useEffect(() => {
-        if (lat && lon) {
-            axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,is_day,precipitation&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration`)
-                .then(response => {
-                    setWeatherData(response.data);
-                })
-                .catch(error => {
-                    console.error('Error fetching weather data', error);
-                    setErrorMessage('An error occurred while fetching weather data. Please try again.');
-                });
-        }
-    }, [lat, lon]);
 
     return (
         <div className='container'>
@@ -74,40 +57,20 @@ function Weather() {
                 {loading ? 'Loading...' : 'Search'}
             </button>
 
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>} {/* Display error message */}
+            {errorMessage && <p>{errorMessage}</p>}
 
             {cityResults.length > 0 && (
-                <div>
-                    <h3>Select the City Here:</h3>
+                <div className='cities'>
                     <ul>
                         {cityResults.map((city, index) => (
-                            <li
-                                key={index}
-                                onClick={() => handleCitySelect(city)}
-                                style={{ cursor: 'pointer' }}
-                            >
+                            <li key={index} onClick={() => handleCitySelect(city)} className='citylist'>
                                 {city.name}, {city.admin1} ({city.country})
                             </li>
                         ))}
                     </ul>
                 </div>
             )}
-
-            {selectedCity && (
-                <div>
-                    <h2>Selected City: {selectedCity.name}, {selectedCity.admin1}</h2>
-                    <p>Country: {selectedCity.country}</p>
-                </div>
-            )}
-
-            {weatherData && (
-                <div>
-                    <h2>Weather Information</h2>
-                    <p>Current Temperature: {weatherData.current.temperature_2m}°C</p>
-                    <p>Apparent Temperature: {weatherData.current.apparent_temperature}°C</p>
-                    <p>Precipitation: {weatherData.current.precipitation} mm</p>
-                </div>
-            )}
+            <h1 className='name'>© weatherly</h1>
         </div>
     );
 }

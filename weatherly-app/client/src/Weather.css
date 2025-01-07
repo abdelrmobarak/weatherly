@@ -1,6 +1,8 @@
 html {
   overflow: hidden;
-  background: linear-gradient(to top,#0C8AF3, #c9e1ff);
+  background: #0C8AF3;
+  background-image: url('./assets/cloud.png');
+  background-position:center -12rem;
 }
 
 
@@ -24,6 +26,10 @@ input {
   font-family: 'Yantramanav';
 }
 
+input {
+  border: 0.2rem solid #888888
+}
+
 button {
   font-family: 'Yantramanav';
   text-align: center;
@@ -44,3 +50,33 @@ button:hover {
   transition: all;
   transition-duration: 300ms;
 }
+
+.citylist{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  cursor:pointer;
+  list-style: none;
+  text-align: center;
+  font-family: 'Yantramanav';
+  font-size: 1.2rem;
+}
+
+.name {
+  position: absolute;
+  bottom: -1rem;
+  color: black;
+  font-size: 1.5rem;
+}
+
+
+.cities {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  padding-right: 1.5rem;
+  margin-top: 1rem;
+  border: 0.3rem solid white;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+
